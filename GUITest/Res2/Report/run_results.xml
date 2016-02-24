@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Iteration">
+<ReportNode type="Action">
+<ReportNode type="Step">
+<Data>
+    <Name>SystemUtil.Run "C:\Program Files\Internet Explorer\iexplore.exe",1</Name>
+    <StartTime>2016-02-23 19:42:26</StartTime>
+    <Result>Done</Result>
+    <Extension>
+      <IconKey>045e07b0b4e0409c997b71b43c3443b8</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>[ userName ].Set</Name>
+    <Description>"test"</Description>
+    <StartTime>2016-02-23 19:43:13</StartTime>
+    <Result>Done</Result>
+    <Extension>
+      <TestObject>
+        <Repository>Local</Repository>
+        <Path>
+          <Object>
+            <Type>Browser</Type>
+            <Name><![CDATA[[ Welcome: Mercury Tours ]]]></Name>
+          </Object>
+          <Object>
+            <Type>Page</Type>
+            <Name><![CDATA[[ Welcome: Mercury Tours ]]]></Name>
+          </Object>
+          <Object>
+            <Type>WebEdit</Type>
+            <Name><![CDATA[[ userName ]]]></Name>
+          </Object>
+        </Path>
+        <Operation>Set</Operation>
+        <OperationData><![CDATA["test"]]></OperationData>
+      </TestObject>
+      <IconKey>076bde25ce774d538f49c6567a135474</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>[ password ].Set</Name>
+    <Description>"test"</Description>
+    <StartTime>2016-02-23 19:43:15</StartTime>
+    <Result>Done</Result>
+    <Extension>
+      <TestObject>
+        <Repository>Local</Repository>
+        <Path>
+          <Object>
+            <Type>Browser</Type>
+            <Name><![CDATA[[ Welcome: Mercury Tours ]]]></Name>
+          </Object>
+          <Object>
+            <Type>Page</Type>
+            <Name><![CDATA[[ Welcome: Mercury Tours ]]]></Name>
+          </Object>
+          <Object>
+            <Type>WebEdit</Type>
+            <Name><![CDATA[[ password ]]]></Name>
+          </Object>
+        </Path>
+        <Operation>Set</Operation>
+        <OperationData><![CDATA["test"]]></OperationData>
+      </TestObject>
+      <IconKey>076bde25ce774d538f49c6567a135474</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>[ Sign-In ].Click</Name>
+    <Description />
+    <StartTime>2016-02-23 19:43:15</StartTime>
+    <Result>Done</Result>
+    <Extension>
+      <TestObject>
+        <Repository>Local</Repository>
+        <Path>
+          <Object>
+            <Type>Browser</Type>
+            <Name><![CDATA[[ Welcome: Mercury Tours ]]]></Name>
+          </Object>
+          <Object>
+            <Type>Page</Type>
+            <Name><![CDATA[[ Welcome: Mercury Tours ]]]></Name>
+          </Object>
+          <Object>
+            <Type>Image</Type>
+            <Name><![CDATA[[ Sign-In ]]]></Name>
+          </Object>
+        </Path>
+        <Operation>Click</Operation>
+      </TestObject>
+      <IconKey>cdbc604e569f40b595936c1c1ea36c6f</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>SystemUtil.Run "C:\Program Files\Internet Explorer\iexplore.exe",1</Name>
+    <StartTime>2016-02-23 19:43:17</StartTime>
+    <Result>Done</Result>
+    <Extension>
+      <IconKey>045e07b0b4e0409c997b71b43c3443b8</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>[ Image ]</Name>
+    <Description>Cannot find the "[ Image ]" object's parent "[ Browser ]" (class Browser).
+Verify that parent properties match an object currently displayed in your application.&lt;br/&gt;&lt;br/&gt;Object's physical description:&lt;br&gt;Name = Welcome: Mercury Tours&lt;br&gt;Mercury Class = Browser&lt;br&gt;</Description>
+    <StartTime>2016-02-23 19:45:57</StartTime>
+    <Result>Done</Result>
+    <Extension>
+      <TestObject>
+        <Repository>Local</Repository>
+        <Path>
+          <Object>
+            <Type>Browser</Type>
+            <Name><![CDATA[[ Browser ]]]></Name>
+          </Object>
+          <Object>
+            <Type>Page</Type>
+            <Name><![CDATA[[ Page ]]]></Name>
+          </Object>
+          <Object>
+            <Type>Image</Type>
+            <Name><![CDATA[[ Image ]]]></Name>
+          </Object>
+        </Path>
+        <OperationData><![CDATA[Cannot find the "[ Image ]" object's parent "[ Browser ]" (class Browser).
+Verify that parent properties match an object currently displayed in your application.]]></OperationData>
+      </TestObject>
+      <IconKey>cdbc604e569f40b595936c1c1ea36c6f</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+      <NodeType>Run Error</NodeType>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action1</Name>
+    <Description />
+    <StartTime>2016-02-23 19:42:24</StartTime>
+    <Duration>214</Duration>
+    <Result>Done</Result>
+    <Extension>
+      <IconKey>e600d3403cb94a18be2ed1214d2ce6c2</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action0</Name>
+    <Description />
+    <StartTime>2016-02-23 19:42:24</StartTime>
+    <Duration>214</Duration>
+    <Result>Done</Result>
+    <Extension>
+      <IconKey>7dbb63d47603406596d23295391ade5c</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Index>1</Index>
+    <TestedApplications />
+  </Data>
+</ReportNode>
+<Data>
+    <Name>GUITest</Name>
+    <ToolName>HP Unified Functional Testing</ToolName>
+    <ToolVersion>12.52</ToolVersion>
+    <Description />
+    <StartTime>2016-02-23 19:42:24</StartTime>
+    <Duration>214</Duration>
+    <Result>Done</Result>
+    <Extension>
+      <IconKey>7bed19adcc6a4f02b73698e80ae2485c</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>-05:00:00</Timezone>
+      <Locale>English (United States)</Locale>
+      <User>egeorge</User>
+      <CpuInfo>Intel(R) Core(TM) i7-4700MQ CPU @ 2.40GHz</CpuInfo>
+      <NumberOfCores>8</NumberOfCores>
+      <TotalMemory>8116</TotalMemory>
+      <HostName>SAILE</HostName>
+      <OSInfo>Windows 10</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xls" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>Res2</ResultName>
+    <RunStartTime>2016-02-23 19:42:24</RunStartTime>
+    <Timezone>-05:00:00</Timezone>
+    <OrchestrationToolName>HP Unified Functional Testing</OrchestrationToolName>
+    <OrchestrationToolVersion>12.52</OrchestrationToolVersion>
+  </GeneralInfo>
+</Results>

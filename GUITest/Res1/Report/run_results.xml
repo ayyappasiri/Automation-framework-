@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Iteration">
+<ReportNode type="Action">
+<ReportNode type="Step">
+<Data>
+    <Name>Type mismatch: 'init'</Name>
+    <ErrorText>Type mismatch: 'init'</ErrorText>
+    <Description>&lt;BR/&gt;Line (1): &amp;quot;init()&amp;quot;.</Description>
+    <StartTime>2016-02-23 19:41:05</StartTime>
+    <Result>Failed</Result>
+    <Extension>
+      <StackTrace>
+        <StackFrame>
+          <ModuleName>Action1</ModuleName>
+          <FileName>Action1</FileName>
+          <Language>VBScript - script block</Language>
+          <FunctionName>VBScript global code</FunctionName>
+          <Scripts>init()</Scripts>
+          <LineNo>1</LineNo>
+        </StackFrame>
+      </StackTrace>
+      <IconKey>7ee7dccac63b40fd983f0c2522815f81</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+      <MergeIsErrorIcon>True</MergeIsErrorIcon>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>Stop Run</Name>
+    <Description>Run stopped by user.</Description>
+    <StartTime>2016-02-23 19:41:14</StartTime>
+    <Result>Information</Result>
+    <Extension>
+      <IconKey>815973c9cab147df95994bfc12576906</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action1</Name>
+    <Description />
+    <StartTime>2016-02-23 19:41:05</StartTime>
+    <Duration>9</Duration>
+    <Result>Failed</Result>
+    <Extension>
+      <IconKey>88a0247302684a5eaf7c6312603edb57</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action0</Name>
+    <Description />
+    <StartTime>2016-02-23 19:41:05</StartTime>
+    <Duration>9</Duration>
+    <Result>Failed</Result>
+    <Extension>
+      <IconKey>a360217805784fd4b8f2168e2fe362dd</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Index>1</Index>
+    <TestedApplications />
+  </Data>
+</ReportNode>
+<Data>
+    <Name>GUITest</Name>
+    <ToolName>HP Unified Functional Testing</ToolName>
+    <ToolVersion>12.52</ToolVersion>
+    <Description />
+    <StartTime>2016-02-23 19:40:34</StartTime>
+    <Duration>40</Duration>
+    <Result>Failed</Result>
+    <Extension>
+      <IconKey>da9e1bad282c4fb68218cddfce6c2ff8</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>-05:00:00</Timezone>
+      <Locale>English (United States)</Locale>
+      <User>egeorge</User>
+      <CpuInfo>Intel(R) Core(TM) i7-4700MQ CPU @ 2.40GHz</CpuInfo>
+      <NumberOfCores>8</NumberOfCores>
+      <TotalMemory>8116</TotalMemory>
+      <HostName>SAILE</HostName>
+      <OSInfo>Windows 10</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xls" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>Res1</ResultName>
+    <RunStartTime>2016-02-23 19:40:34</RunStartTime>
+    <Timezone>-05:00:00</Timezone>
+    <OrchestrationToolName>HP Unified Functional Testing</OrchestrationToolName>
+    <OrchestrationToolVersion>12.52</OrchestrationToolVersion>
+  </GeneralInfo>
+</Results>

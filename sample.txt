@@ -1,0 +1,244 @@
+Dim env, destinationTestResultDir, controllerDic, testcaseDic
+FrameworkDir = "C:\Users\egeorge\Desktop\Framework"
+TestCaseDir = FrameworkDir+"\Test Case"
+TestResultDir = FrameworkDir +"\Test Result"
+TestCaseController = "TestController.xlsx"
+
+Function init()
+	currentDate = replace(date,"/","-")
+	user=Environment.Value("UserName")
+	folderName = FrameworkDir +"\Test Result\"+currentDate
+	userFolder = folderName+"\"+user
+	Set dir = createobject("scripting.filesystemobject")
+	if not dir.FolderExists(folderName) then
+	dir.CreateFolder folderName
+	End if
+	if not dir.FolderExists (userFolder) then 
+	dir.CreateFolder userFolder
+	End if
+	exetime=userFolder+"\"+replace(time(),":","-")
+	if not dir.FolderExists (exetime) then 
+	dir.CreateFolder exetime
+	End if
+	destinationTestResultDir=exetime+"\"
+	copyTestCaseFile("TestController.xlsx")
+End Function
+
+Function copyTestCaseFile(filename)
+	Set f = createObject("scripting.filesystemobject")
+	f.CopyFile TestCaseDir+"\"+filename,destinationTestResultDir,true
+	set f=nothing
+End Function
+
+Function run()
+	Set xl=createobject("excel.application")
+	xl.Workbooks.Open destinationTestResultDir+"\"+TestCaseController
+    xl.Application.Visible = true
+    set mysheetcont = xl.ActiveWorkbook.Worksheets("Sheet1")
+    col=mysheetcont.UsedRange.Columns.Count
+    row=mysheetcont.UsedRange.Columns.Count
+    set controllerDic= createobject("scripting.dictionary")
+    For i = 1 To col
+    	controllerDic.Add mysheetcont.cells(1,i).value, i
+    Next
+    For i = 2 To row+1
+    	If Lcase(mysheetcont.cells(i,controllerDic.Item("Flag")))="yes"Then
+    	    testcase=trim(mysheetcont.cells(i,controllerDic.Item("Test Case Name")))+".xlsx"
+    		result=exe(testcase)
+    		mysheetcont.cells(i,controllerDic.Item("Test Case Results")).value=result
+    		else
+    		mysheetcont.cells(i,controllerDic.Item("Test Case Results")).value="Skip"
+    	End If
+    Next
+'Save the Workbook
+xl.ActiveWorkbook.Save							 
+'Close the Workbook
+xl.ActiveWorkbook.Close						 
+'Close Excel
+xl.Application.Quit
+Set mysheetcont =nothing
+Set myxlcont = nothing   
+End Function
+
+Function exe(testcase)
+	'msgbox testcase
+	err.clear
+	On error resume next
+	copyTestCaseFile(testcase)
+	Set myxlcont = createobject("excel.application")
+	myxlcont.Workbooks.Open destinationTestResultDir+"\"+testcase
+	myxlcont.Application.Visible = true
+	set mysheetcont = myxlcont.ActiveWorkbook.Worksheets("Sheet1")
+	col=mysheetcont.UsedRange.Columns.Count
+	row=mysheetcont.UsedRange.Rows.Count
+	set testcaseDic= createobject("scripting.dictionary")
+    For i = 1 To col
+    	testcaseDic.Add mysheetcont.cells(1,i).value, i
+    Next
+	For  i= 2 to row
+		KeywordName = mysheetcont.cells(i,4).value
+		Select Case trim(KeywordName)
+		   Case "NavigateB"
+				stepStatus = NavigateB(mysheetcont.cells(i,5).value)
+		   Case "EnterWEbedit"
+				stepStatus = EnterWEbedit(mysheetcont.cells(i,5).value,mysheetcont.cells(i,6).value)
+		   Case "ClickImage"
+				Call ClickImage(mysheetcont.cells(i,5).value) 
+		   Case "WaitSecond"
+				Call WaitSecond(mysheetcont.cells(i,5).value)
+		   Case "SetBrowserobject"
+				Call SetBrowserobject()
+		   Case else
+				Msgbox "Function Not Available in Function Library"
+		End Select
+	mysheetcont.cells(i,2).Value = stepStatus
+   Next
+Call CloseBrowser()
+'Save the Workbook
+myxlcont.ActiveWorkbook.Save							 
+'Close the Workbook
+myxlcont.ActiveWorkbook.Close						 
+'Close Excel
+myxlcont.Application.Quit
+Set mysheetcont =nothing
+Set myxlcont = nothing   
+If Err.Number = 0 Then
+		exe = "Pass"
+		else
+		exe = "Fail"
+End If
+End Function
+
+Public Function SetBrowserobject()
+Err.Clear 
+On Error Resume Next
+Set testBrowser = description.Create
+testBrowser("micclass").value="Browser"
+testBrowser("name").value = "Welcome: Mercury Tours"
+
+Set testPage = description.Create
+testPage("micclass").value="Page"
+testPage("title").value ="Welcome: Mercury Tours"
+
+Set env= Browser(testBrowser).Page(testPage)
+env.highlight
+If Err.Number = 0 Then
+		SetBrowserobject = "Passed"
+		else
+		SetBrowserobject = "Failed"
+	End If
+
+End Function
+
+Public Function CloseBrowser()
+	'Set objShell = CreateObject("Wscript.Shell")
+	'objShell.Run("taskkill /im iexplore.exe"), 1, TRUE
+	Dim WshShell, oExec
+Set WshShell = CreateObject("WScript.Shell")
+
+Set oExec = WshShell.Exec("taskkill /fi ""imagename eq iexplore.exe""")
+
+Do While oExec.Status = 0
+     WScript.Sleep 100
+Loop
+End Function
+
+
+
+
+
+
+
+Public Function NavigateB(url)	
+	Err.Clear 
+	On Error Resume Next
+	SystemUtil.Run"C:\Program Files\Internet Explorer\iexplore.exe",url,"",""
+	If Err.Number = 0 Then
+		NavigateB = "Passed"
+		else
+		NavigateB = "Failed"
+	End If
+End Function
+
+Public Function WaitSecond(totaltimeinSecond)
+	Wait cint(totaltimeinSecond)
+End Function
+
+Public Function EnterWEbedit(objectNameproperty,strValue)
+	Err.Clear 
+    On Error Resume Next
+    env.Webedit(webEdit(objectNameproperty)).highlight
+	env.Webedit(webEdit(objectNameproperty)).set("test")	
+	If Err.Number = 0 Then
+		EnterWEbedit = "Passed"
+		else
+		EnterWEbedit = "Failed"
+	End If
+	
+End Function
+
+Public Function ClickImage(objectNamepropert)
+	env.Image(image(objectNamepropert)).Click
+End Function
+
+'Object Return Functions
+Public Function webEdit(name)
+Set object = description.Create
+object("micclass").value = "WebEdit"
+object("name").value=name
+'object.highlight
+set webEdit=object
+End Function
+
+Public Function image(name)
+Set object = description.Create
+object("micclass").value = "Image"
+object("name").value=name
+set image=object
+End Function
+
+Public Function imageLogout(name)
+Set object = description.Create
+object("micclass").value = "Image"
+object("file name").value="name"
+set webEdit=object
+End Function
+
+Public Function webRadioGroup(name)
+Set object = description.Create
+object("micclass").value = "WebRadioGroup"
+object("name").value=name
+set webEdit=object
+End Function
+
+Public Function webList(name)
+Set object = description.Create
+object("micclass").value = "WebList"
+object("name").value=name
+set webEdit=object
+End Function
+
+'function to display elements on the web page
+public Function element()
+	Dim editfield,links, images, radioButton, dropdownList
+	Dim edit,link,img,radio,list
+	Set edit = Description.Create
+	edit("micclass").value = "WebEdit"
+	Set link = Description.Create
+	link("micclass").value = "Link"
+	Set img = Description.Create
+	img("micclass").value = "Image"
+	Set radio = Description.Create
+	radio("micclass").value = "WebRadioGroup"
+	Set list = Description.Create
+	list("micclass").value = "WebList"
+	
+	set editfield=Browser(testBrowser).Page(testPage).ChildObjects(edit)
+	set links=Browser(testBrowser).Page(testPage).ChildObjects(link)
+	set images=Browser(testBrowser).Page(testPage).ChildObjects(img)
+	set radioButton=Browser(testBrowser).Page(testPage).ChildObjects(radio)
+	set dropdownList=Browser(testBrowser).Page(testPage).ChildObjects(list)
+	
+	print ("Edit Field = "& editfield.count &"; Links = "& links.count &"; Images = "& images.count &"; Radio button = "& radioButton.count &"; Dropdown list = "& dropdownList.count)
+
+End Function
